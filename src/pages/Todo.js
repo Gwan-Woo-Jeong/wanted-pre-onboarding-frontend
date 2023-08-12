@@ -102,7 +102,7 @@ const Todo = ({ token }) => {
             <li key={id}>
               {editingIdx === idx ? (
                 <>
-                  <textarea
+                  <input
                     data-testid="modify-input"
                     value={editingText}
                     onChange={(e) => setEditingText(e.target.value)}
