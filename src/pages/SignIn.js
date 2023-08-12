@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 function SignIn({ onSigninSuccess, token }) {
   const [email, setEmail] = useState("");
@@ -70,7 +70,7 @@ function SignIn({ onSigninSuccess, token }) {
         >
           로그인
         </button>
-        <a href="/signup">회원가입</a>
+        <Link to="/signup">회원가입</Link>
       </form>
     </div>
   );

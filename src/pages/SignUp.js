@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Modal from "../components/Modal";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useModal } from "../contexts/ModalContext";
 
 function SignUp({ onSignupSuccess }) {
@@ -49,7 +49,7 @@ function SignUp({ onSignupSuccess }) {
         alt="signup-img"
       />
       <div className="form-container">
-        <a href="/signin" class="back-btn">
+        <Link to="/signin" className="back-btn">
           <svg
             fill="none"
             stroke="currentColor"
@@ -65,7 +65,7 @@ function SignUp({ onSignupSuccess }) {
             ></path>
           </svg>
           <span>로그인</span>
-        </a>
+        </Link>
         <form onSubmit={handleSubmit}>
           <input
             data-testid="email-input"
