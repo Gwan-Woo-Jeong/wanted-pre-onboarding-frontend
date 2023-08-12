@@ -64,7 +64,7 @@ function SignUp({ onSigninSuccess, token }) {
         />
         {error && <p>{error}</p>}
         <button
-          data-testid="signup-button"
+          data-testid="signin-button"
           type="submit"
           disabled={!isValidEmail(email) || !isValidPassword(password)}
         >
