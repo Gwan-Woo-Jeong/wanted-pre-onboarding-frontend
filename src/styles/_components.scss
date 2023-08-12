@@ -60,3 +60,18 @@
   align-items: center;
   height: 100vh;
 }
+
+%todo-button {
+  background-color: $blue;
+  color: $white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 0.5rem 0.8rem;
+  font-size: 0.9rem;
+  transition: background-color 0.3s;
+
+  &:hover {
+    filter: brightness(0.7);
+  }
+}
