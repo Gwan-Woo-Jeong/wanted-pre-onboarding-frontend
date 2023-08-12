@@ -1,2 +1,102 @@
 #sign-up {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  img {
+    width: 20rem;
+    height: auto;
+  }
+
+  .form-container {
+    margin-top: 2rem;
+    position: relative;
+  }
+
+  .back-btn {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: 15px;
+    left: 10px;
+    color: $border-gray;
+    filter: contrast(0.3);
+
+    &:link {
+      text-decoration: none;
+    }
+    &:visited {
+      text-decoration: none;
+    }
+    &:hover {
+      text-decoration: none;
+    }
+    &:active {
+      text-decoration: none;
+    }
+
+    svg {
+      height: 19px;
+      width: 19px;
+    }
+
+    span {
+      flex: 1;
+      font-size: 0.8rem;
+      font-weight: 200;
+    }
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 2rem 2rem 2rem;
+    border: 1px solid $border-gray;
+    border-radius: 0.5rem;
+
+    input {
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid $border-gray;
+      border-radius: 0.3rem;
+      font-size: 0.8rem;
+
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+        border-color: $blue;
+      }
+    }
+
+    p {
+      color: $red;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    button {
+      @extend %default-button;
+    }
+  }
+}
+
+#sign-up-modal {
+  width: 300px;
+  text-align: center;
+  padding: 1.5rem 1.5rem 0.8rem 1.5rem;
+
+  p {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+
+  button {
+    @extend %default-button;
+    margin-top: 0.5rem;
+  }
 }
