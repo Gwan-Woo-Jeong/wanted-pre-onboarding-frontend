@@ -9,7 +9,15 @@ import { ModalProvider } from "./contexts/ModalContext";
 const App = () => {
   const [token, setToken] = useState(localStorage.getItem("token"));
 
-  const handleSignupSuccess = () => setToken(null);
+  const handleSignupSuccess = () => {
+    localStorage.setItem("token", null);
+    setToken(null);
+  };
+
+  const handleSigninSuccess = (token) => {
+    localStorage.setItem("token", token);
+    setToken(token);
+  };
 
   return (
     <ModalProvider>
@@ -20,7 +28,11 @@ const App = () => {
             path="/signup"
             render={() => <Signup onSignupSuccess={handleSignupSuccess} />}
           />
-          <Route exact path="/signin" render={() => <Signin />} />
+          <Route
+            exact
+            path="/signin"
+            render={() => <Signin onSigninSuccess={handleSigninSuccess} />}
+          />
           <Route exact path="/todo" render={() => <Todo />} />
           <Route path="*" render={() => <NotFound />} />
         </Switch>

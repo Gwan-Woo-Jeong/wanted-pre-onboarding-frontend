@@ -17,3 +17,46 @@
     cursor: not-allowed;
   }
 }
+
+%sign-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 2rem 2rem 2rem;
+  border: 1px solid $border-gray;
+  border-radius: 0.5rem;
+
+  input {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid $border-gray;
+    border-radius: 0.3rem;
+    font-size: 0.8rem;
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+      border-color: $blue;
+    }
+  }
+
+  p {
+    color: $red;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  button {
+    @extend %default-button;
+  }
+}
+
+%sign-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
