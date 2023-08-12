@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 
-function SignUp({ onSigninSuccess, token }) {
+function SignIn({ onSigninSuccess, token }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -76,4 +76,4 @@ function SignUp({ onSigninSuccess, token }) {
   );
 }
 
-export default SignUp;
+export default SignIn;

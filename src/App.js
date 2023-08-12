@@ -5,8 +5,8 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
-import Signup from "./pages/SignUp";
-import Signin from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
+import SignIn from "./pages/SignIn";
 import Todo from "./pages/Todo";
 import NotFound from "./pages/NotFound";
 import { ModalProvider } from "./contexts/ModalContext";
@@ -37,7 +37,7 @@ const App = () => {
               isLoggedIn() ? (
                 <Redirect to="/todo" />
               ) : (
-                <Signup onSignupSuccess={handleSignupSuccess} />
+                <SignUp onSignupSuccess={handleSignupSuccess} />
               )
             }
           />
@@ -48,7 +48,7 @@ const App = () => {
               isLoggedIn() ? (
                 <Redirect to="/todo" />
               ) : (
-                <Signin onSigninSuccess={handleSigninSuccess} token={token} />
+                <SignIn onSigninSuccess={handleSigninSuccess} token={token} />
               )
             }
           />
