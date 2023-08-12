@@ -48,7 +48,7 @@ const App = () => {
               isLoggedIn() ? (
                 <Redirect to="/todo" />
               ) : (
-                <Signin onSigninSuccess={handleSigninSuccess} />
+                <Signin onSigninSuccess={handleSigninSuccess} token={token} />
               )
             }
           />
@@ -56,7 +56,7 @@ const App = () => {
             exact
             path="/todo"
             render={() =>
-              !isLoggedIn() ? <Redirect to="/signin" /> : <Todo />
+              !isLoggedIn() ? <Redirect to="/signin" /> : <Todo token={token} />
             }
           />
           <Route path="*" render={() => <NotFound />} />

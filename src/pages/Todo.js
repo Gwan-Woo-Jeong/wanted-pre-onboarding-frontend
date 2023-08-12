@@ -3,15 +3,15 @@ import axios from "axios";
 
 const TODO_API_URL = "https://www.pre-onboarding-selection-task.shop/todos";
 
-const AXIOS_CONFIG = {
-  headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-};
-
-const Todo = () => {
+const Todo = ({ token }) => {
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState("");
   const [editingIdx, setEditingIdx] = useState(-1);
   const [editingText, setEditingText] = useState("");
+
+  const AXIOS_CONFIG = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
 
   const getTodos = async () => {
     const response = await axios.get(TODO_API_URL, AXIOS_CONFIG);

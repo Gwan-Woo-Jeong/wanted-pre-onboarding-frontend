@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 
-function SignUp({ onSigninSuccess }) {
+function SignUp({ onSigninSuccess, token }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const history = useHistory();
+
+  useEffect(() => {
+    if (token !== null) history.replace("/todo");
+  }, [token]);
 
   const isValidEmail = (email) => email.includes("@");
   const isValidPassword = (password) => password.length >= 8;
@@ -30,10 +34,7 @@ function SignUp({ onSigninSuccess }) {
         { email, password }
       );
 
-      if (onSigninSuccess && access_token) {
-        onSigninSuccess(access_token);
-        history.replace("/todo");
-      }
+      if (onSigninSuccess && access_token) onSigninSuccess(access_token);
     } catch (error) {
       setError(error.response.data.message);
       console.error("로그인 에러:", error);
