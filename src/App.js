@@ -15,7 +15,7 @@ const App = () => {
   const [token, setToken] = useState(localStorage.getItem("token"));
 
   const handleSignupSuccess = () => {
-    localStorage.setItem("token", null);
+    localStorage.removeItem("token");
     setToken(null);
   };
 
@@ -56,7 +56,11 @@ const App = () => {
             exact
             path="/todo"
             render={() =>
-              !isLoggedIn() ? <Redirect to="/signin" /> : <Todo token={token} />
+              !isLoggedIn() ? (
+                <Redirect to="/signin" />
+              ) : (
+                <Todo token={token} setToken={setToken} />
+              )
             }
           />
           <Route path="*" render={() => <NotFound />} />

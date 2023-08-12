@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 const TODO_API_URL = "https://www.pre-onboarding-selection-task.shop/todos";
 
-const Todo = ({ token }) => {
+const Todo = ({ token, setToken }) => {
+  const history = useHistory();
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState("");
   const [editingIdx, setEditingIdx] = useState(-1);
@@ -14,8 +16,17 @@ const Todo = ({ token }) => {
   };
 
   const getTodos = async () => {
-    const response = await axios.get(TODO_API_URL, AXIOS_CONFIG);
-    setTodos(response.data);
+    try {
+      const response = await axios.get(TODO_API_URL, AXIOS_CONFIG);
+      setTodos(response.data);
+    } catch (error) {
+      console.error("에러 :", error);
+      if (error.response.status === 401) {
+        setToken(null);
+        localStorage.removeItem("token");
+        history.replace("/sigin");
+      }
+    }
   };
 
   useEffect(() => {
