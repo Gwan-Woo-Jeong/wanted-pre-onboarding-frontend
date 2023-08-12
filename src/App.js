@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+  Switch,
+} from "react-router-dom";
 import Signup from "./pages/SignUp";
 import Signin from "./pages/SignIn";
 import Todo from "./pages/Todo";
@@ -19,6 +24,8 @@ const App = () => {
     setToken(token);
   };
 
+  const isLoggedIn = () => token !== null;
+
   return (
     <ModalProvider>
       <Router>
@@ -26,14 +33,32 @@ const App = () => {
           <Route
             exact
             path="/signup"
-            render={() => <Signup onSignupSuccess={handleSignupSuccess} />}
+            render={() =>
+              isLoggedIn() ? (
+                <Redirect to="/todo" />
+              ) : (
+                <Signup onSignupSuccess={handleSignupSuccess} />
+              )
+            }
           />
           <Route
             exact
             path="/signin"
-            render={() => <Signin onSigninSuccess={handleSigninSuccess} />}
+            render={() =>
+              isLoggedIn() ? (
+                <Redirect to="/todo" />
+              ) : (
+                <Signin onSigninSuccess={handleSigninSuccess} />
+              )
+            }
           />
-          <Route exact path="/todo" render={() => <Todo />} />
+          <Route
+            exact
+            path="/todo"
+            render={() =>
+              !isLoggedIn() ? <Redirect to="/signin" /> : <Todo />
+            }
+          />
           <Route path="*" render={() => <NotFound />} />
         </Switch>
       </Router>
